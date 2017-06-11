@@ -1,0 +1,2 @@
+/usr/bin/ar qc libmylib.a  CMakeFiles/mylib.dir/home/zerpiko/git/libraries/DataTools.cpp.o CMakeFiles/mylib.dir/home/zerpiko/git/libraries/Names.cpp.o
+/usr/bin/ranlib libmylib.a

@@ -1,0 +1,12 @@
+CMAKE_MINIMUM_REQUIRED(VERSION 2.8)
+
+PROJECT(analytical_composite_regions)
+
+INCLUDE_DIRECTORIES(/home/zerpiko/git/libraries)
+
+ADD_LIBRARY(mylib /home/zerpiko/git/libraries/DataTools.cpp /home/zerpiko/git/libraries/Names.cpp)
+
+ADD_EXECUTABLE(mycode composite_regions_6_6.cc)
+
+TARGET_LINK_LIBRARIES(mycode mylib lapack blas)
+
