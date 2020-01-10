@@ -22,7 +22,7 @@ jobs:
     - name: build
       run: |
         ls ../
+        echo $GITHUB_WORKSPACE
+        export GITHOME=$GITHUB_WORKSPACE/../
         cd build
         cmake ../source
-      env:
-        GITHOME: $GITHUB_WORKSPACE/../
