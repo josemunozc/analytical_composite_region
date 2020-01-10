@@ -81,7 +81,7 @@ double LapackLUdcmp::det()
 class AnalyticCompositeRegion
 {
 public:
-  AnalyticCompositeRegion();
+  AnalyticCompositeRegion(string input_dir_);
   void find_roots(const unsigned int number_of_roots,
 		  vector<double> &roots);
   void find_coefficients(const vector<double> &roots,
@@ -112,6 +112,7 @@ private:
   double boundary_amplitud;
   double boundary_period;
   double boundary_phase;
+  string input_dir;
   string filename_properties;
   string filename_positions;
   string filename_times;
@@ -131,75 +132,76 @@ private:
   vector<double> times;
 };
 
-AnalyticCompositeRegion::AnalyticCompositeRegion():
-		number_of_roots(500),
-		h1(10000000.000),
-		h2(0.000),
-		initial_condition(0.),
-		origin(0.),
-		boundary_average(15.),
-		boundary_amplitud(10.),
-		boundary_period(86400.),
-		boundary_phase(54000.),
-		filename_properties("properties.txt"),
-		filename_positions("positions.txt"),
-		filename_times("times.txt"),
-		active_point_source(false),
-		source_position(1.05),
-		source_amplitud(100.),
-		source_period(86400.),
-		source_phase(54000.)
+AnalyticCompositeRegion::AnalyticCompositeRegion(string input_dir_):
+  number_of_roots(500),
+  h1(10000000.000),
+  h2(0.000),
+  initial_condition(0.),
+  origin(0.),
+  boundary_average(15.),
+  boundary_amplitud(10.),
+  boundary_period(86400.),
+  boundary_phase(54000.),
+  input_dir(input_dir_),
+filename_properties("properties.txt"),
+  filename_positions("positions.txt"),
+  filename_times("times.txt"),
+  active_point_source(false),
+  source_position(1.05),
+  source_amplitud(100.),
+  source_period(86400.),
+  source_phase(54000.)
 {
-	{
-		DataTools data_tools;
-		vector< vector<double> > data;
-		data_tools.read_data(filename_properties,data);
-		x.push_back(origin);
-		for (unsigned int i=0; i<data.size(); i++)
-		{
-			layer_thickness.push_back(data[i][0]);
-			k.push_back(data[i][1]);
-			rho.push_back(data[i][2]);
-			cp.push_back(data[i][3]);
-			alpha.push_back(data[i][1]/(data[i][2]*data[i][3]));
-			x.push_back(x[i]+data[i][0]);
-		}
-	}
-	{
-		DataTools data_tools;
-		vector< vector<double> > data;
-		data_tools.read_data(filename_times,data);
-		for (unsigned int i=0; i<data.size(); i++)
-		{
-			times.push_back(data[i][0]);
-		}
-	}
-	{
-		DataTools data_tools;
-		vector< vector<double> > data;
-		data_tools.read_data(filename_positions,data);
-		for (unsigned int i=0; i<data.size(); i++)
-		{
-			positions.push_back(data[i][0]);
-		}
-	}
-	/*
-	 * Check if the requested positions are within
-	 * the layers rage
-	 */
-//	for (unsigned int i=0; i<positions.size(); i++)
-//	{
-//		if (positions[i]<x[0] ||
-//			positions[i]>x[x.size()-1])
-//		{
-//			cout << "Error. Position "
-//					<< positions[i] << " is out of range: "
-//					<< x[0] << " --- " << x[x.size()-1] << "\n";
-//		}
-//	}
+  {
+    DataTools data_tools;
+    vector< vector<double> > data;
+    data_tools.read_data(input_dir+"/"+filename_properties,data);
+    x.push_back(origin);
+    for (unsigned int i=0; i<data.size(); i++)
+      {
+	layer_thickness.push_back(data[i][0]);
+	k.push_back(data[i][1]);
+	rho.push_back(data[i][2]);
+	cp.push_back(data[i][3]);
+	alpha.push_back(data[i][1]/(data[i][2]*data[i][3]));
+	x.push_back(x[i]+data[i][0]);
+      }
+  }
+  {
+    DataTools data_tools;
+    vector< vector<double> > data;
+    data_tools.read_data(input_dir+"/"+filename_times,data);
+    for (unsigned int i=0; i<data.size(); i++)
+      {
+	times.push_back(data[i][0]);
+      }
+  }
+  {
+    DataTools data_tools;
+    vector< vector<double> > data;
+    data_tools.read_data(input_dir+"/"+filename_positions,data);
+    for (unsigned int i=0; i<data.size(); i++)
+      {
+	positions.push_back(data[i][0]);
+      }
+  }
+  /*
+   * Check if the requested positions are within
+   * the layers rage
+   */
+  //	for (unsigned int i=0; i<positions.size(); i++)
+  //	{
+  //		if (positions[i]<x[0] ||
+  //			positions[i]>x[x.size()-1])
+  //		{
+  //			cout << "Error. Position "
+  //					<< positions[i] << " is out of range: "
+  //					<< x[0] << " --- " << x[x.size()-1] << "\n";
+  //		}
+  //	}
 
-	number_of_layers=layer_thickness.size();
-//	number_of_equations=2*number_of_layers;
+  number_of_layers=layer_thickness.size();
+  //	number_of_equations=2*number_of_layers;
 }
 
 void AnalyticCompositeRegion::print_properties()
@@ -547,11 +549,16 @@ double AnalyticCompositeRegion::Phi_der(double A, double x)
   return (-A*sin(A*x));
 }
 
-int main()
+int main(int argc, char* argv[])
 {
-	AnalyticCompositeRegion analytic_composite_region;
-	analytic_composite_region.print_properties();
-	analytic_composite_region.calculate_results();
-
-	return 1;
+  if (argc != 2)
+    {
+      cout << "wrong number of arguments." << argc << endl;
+    }
+  cout << "input dir: " << argv[1] << endl;
+  AnalyticCompositeRegion analytic_composite_region(argv[1]);
+  analytic_composite_region.print_properties();
+  analytic_composite_region.calculate_results();
+  
+  return 1;
 }

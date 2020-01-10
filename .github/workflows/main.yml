@@ -38,3 +38,4 @@ jobs:
         cd build
         cmake ../source -DLAPACK_DIR=/usr/share/miniconda/envs/mytest/lib
         make
+        ./mycode ../input
