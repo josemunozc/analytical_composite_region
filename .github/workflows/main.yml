@@ -26,3 +26,4 @@ jobs:
         export GITHOME=$GITHUB_WORKSPACE/../
         cd build
         cmake ../source
+        make
