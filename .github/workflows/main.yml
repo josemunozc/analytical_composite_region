@@ -24,4 +24,4 @@ jobs:
         cd build
         cmake ../source
       env:
-        GITHOME:$GITHUB_WORKSPACE/../
+        GITHOME: $GITHUB_WORKSPACE/../
