@@ -10,5 +10,5 @@ SET(LAPACK_DIR "" CACHE PATH "path to liblapack")
 
 LINK_DIRECTORIES(${LAPACK_DIR})
 ADD_EXECUTABLE(mycode composite_regions_6_6.cc)
-TARGET_LINK_LIBRARIES(mycode mylib mylapack blas)
+TARGET_LINK_LIBRARIES(mycode mylib lapack blas)
 
