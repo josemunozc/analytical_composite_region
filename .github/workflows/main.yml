@@ -18,7 +18,7 @@ jobs:
     - name: clone dependency repo
       run: |
         cd ..
-        clone https://github.com/zerpiko/libraries.git
+        git clone https://github.com/zerpiko/libraries.git
     - name: build
       run: |
         ls 
