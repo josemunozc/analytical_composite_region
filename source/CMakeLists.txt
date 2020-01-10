@@ -2,9 +2,9 @@ CMAKE_MINIMUM_REQUIRED(VERSION 2.8)
 
 PROJECT(analytical_composite_regions)
 
-INCLUDE_DIRECTORIES(/home/$ENV{USER}/git/libraries)
+INCLUDE_DIRECTORIES($ENV{HOME}/git/libraries)
 
-ADD_LIBRARY(mylib /home/$ENV{USER}/git/libraries/DataTools.cpp /home/$ENV{USER}/git/libraries/Names.cpp)
+ADD_LIBRARY(mylib $ENV{HOME}/git/libraries/DataTools.cpp $ENV{HOME}/git/libraries/Names.cpp)
 
 ADD_EXECUTABLE(mycode composite_regions_6_6.cc)
 
