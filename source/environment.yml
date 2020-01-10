@@ -1,4 +1,6 @@
 name: mytest
+channels:
+  - conda-forge
 dependencies:
   - lapack
   - blas
