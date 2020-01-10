@@ -35,7 +35,7 @@ jobs:
         ls ../
         echo $GITHUB_WORKSPACE
         export GITHOME=$GITHUB_WORKSPACE/../
-        echo $CONDA_PREFIX
+        env | grep -i conda
         export LD_LIBRARY_PATH=$CONDA_PREFIX/lib
         ls $CONDA_PREFIX/lib
         cd build
