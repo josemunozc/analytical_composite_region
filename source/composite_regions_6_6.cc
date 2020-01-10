@@ -560,5 +560,5 @@ int main(int argc, char* argv[])
   analytic_composite_region.print_properties();
   analytic_composite_region.calculate_results();
   
-  return 1;
+  return 0;
 }
