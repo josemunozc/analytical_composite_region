@@ -38,5 +38,5 @@ jobs:
         export LD_LIBRARY_PATH=/usr/share/miniconda/envs/mytest/lib
         ls /usr/share/miniconda/envs/mytest/lib
         cd build
-        cmake ../source
+        cmake ../source -DLAPACK_DIR=/usr/share/miniconda/envs/mytest/lib
         make

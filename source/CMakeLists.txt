@@ -8,5 +8,9 @@ ADD_LIBRARY(mylib $ENV{GITHOME}/libraries/DataTools.cpp $ENV{GITHOME}/libraries/
 
 ADD_EXECUTABLE(mycode composite_regions_6_6.cc)
 
+SET(LAPACK_DIR "" CACHE PATH "path to liblapack")
+
+link_directories(${LAPACK_DIR})
+
 TARGET_LINK_LIBRARIES(mycode mylib lapack blas)
 
