@@ -35,9 +35,9 @@ jobs:
         ls ../
         echo $GITHUB_WORKSPACE
         export GITHOME=$GITHUB_WORKSPACE/../
-        env | grep -i conda
-        export LD_LIBRARY_PATH=$CONDA_PREFIX/lib
-        ls $CONDA_PREFIX/lib
+        env | grep -i mytest
+        export LD_LIBRARY_PATH=/usr/share/miniconda/envs/mytest/lib
+        ls /usr/share/miniconda/envs/mytest/lib
         cd build
         cmake ../source
         make
