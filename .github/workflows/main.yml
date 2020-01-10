@@ -17,5 +17,5 @@ jobs:
         echo test, and deploy your project.
     - name: build
       run: |
-        echo test,
-        echo test2.
+        ls
+        echo pwd
