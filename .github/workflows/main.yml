@@ -18,6 +18,6 @@ jobs:
     - name: build
       run: |
         echo $HOME
-	echo $GITHUB_WORKSPACE
+	echo pwd
 
 
