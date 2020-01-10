@@ -35,7 +35,6 @@ jobs:
         ls ../
         echo $GITHUB_WORKSPACE
         export GITHOME=$GITHUB_WORKSPACE/../
-        env | grep -i mytest
         export LD_LIBRARY_PATH=/usr/share/miniconda/envs/mytest/lib
         ls /usr/share/miniconda/envs/mytest/lib
         cd build
