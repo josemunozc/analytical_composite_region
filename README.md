@@ -4,3 +4,7 @@ Implementation in C++ of the analytical solution for the heat transfer equation 
 Dependencies:
  - Cmake > 2.8
  - github repo zerpiko/libraries/
+ - miniconda
+ - conda-forge/blas
+ - conda-forge/lapack
+ 
