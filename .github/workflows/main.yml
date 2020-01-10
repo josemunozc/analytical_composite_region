@@ -15,7 +15,11 @@ jobs:
       run: |
         echo Add other actions to build,
         echo test, and deploy your project.
+    - name: clone dependency repo
+      run: |
+        cd ..
+        clone https://github.com/zerpiko/libraries.git
     - name: build
       run: |
-        ls
-        echo pwd
+        ls 
+        
