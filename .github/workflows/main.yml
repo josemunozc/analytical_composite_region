@@ -21,6 +21,7 @@ jobs:
         git clone https://github.com/zerpiko/libraries.git
     - name: build
       run: |
+        ls ../
         cd build
         cmake ../source
       env:
