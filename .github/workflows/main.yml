@@ -18,7 +18,3 @@ jobs:
     - name: build
       run: |
         echo $HOME
-<<<<<<< HEAD
-=======
-	echo $PWD
->>>>>>> f92df97fd8afc0311a78772c8adbb0c362c89ccb
