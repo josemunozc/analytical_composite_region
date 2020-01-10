@@ -34,7 +34,7 @@ jobs:
       run: |
         export GITHOME=$GITHUB_WORKSPACE/../
         export LD_LIBRARY_PATH=/usr/share/miniconda/envs/mytest/lib
-        mkdir -rf build
+        mkdir build
         cd build
         cmake ../source -DLAPACK_DIR=/usr/share/miniconda/envs/mytest/lib
         make
