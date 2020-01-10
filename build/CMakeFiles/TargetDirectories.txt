@@ -1,4 +1,0 @@
-/home/zerpiko/git/analytical_composite_regions/build/CMakeFiles/edit_cache.dir
-/home/zerpiko/git/analytical_composite_regions/build/CMakeFiles/rebuild_cache.dir
-/home/zerpiko/git/analytical_composite_regions/build/CMakeFiles/mycode.dir
-/home/zerpiko/git/analytical_composite_regions/build/CMakeFiles/mylib.dir
