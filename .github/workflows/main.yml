@@ -32,11 +32,9 @@ jobs:
         git clone https://github.com/zerpiko/libraries.git
     - name: build
       run: |
-        ls ../
-        echo $GITHUB_WORKSPACE
         export GITHOME=$GITHUB_WORKSPACE/../
         export LD_LIBRARY_PATH=/usr/share/miniconda/envs/mytest/lib
-        ls /usr/share/miniconda/envs/mytest/lib
+        mkdir -rf build
         cd build
         cmake ../source -DLAPACK_DIR=/usr/share/miniconda/envs/mytest/lib
         make
