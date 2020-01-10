@@ -3,6 +3,26 @@ name: CI
 on: [push]
 
 jobs:
+
+  example-1:
+    name: Ex1
+    runs-on: ubuntu-latest
+    strategy:
+      fail-fast: false
+    steps:
+      - uses: goanpeca/setup-miniconda@v1
+        with:
+          auto-update-conda: true
+          python-version: 3.7
+          activate-environment: mytest
+          environment-file: ./source/environment.yml
+      - name: Conda info
+        shell: bash -l {0}
+        run: conda info
+      - name: Conda list
+        shell: pwsh
+        run: conda list
+
   build:
 
     runs-on: ubuntu-latest

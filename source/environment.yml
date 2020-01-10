@@ -1,0 +1,4 @@
+name: mytest
+dependencies:
+  - lapack
+  - blas
